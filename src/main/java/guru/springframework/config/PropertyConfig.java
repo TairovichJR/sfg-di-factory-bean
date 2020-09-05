@@ -13,15 +13,15 @@ import guru.springframework.examplebeans.FakeDataSource;
 import guru.springframework.examplebeans.FakeJmsBroker;
 
 @Configuration
-//@PropertySource({"classpath:datasource.properties","classpath:jms.properties"})  was added in spring 4
-@PropertySources({
-		@PropertySource("classpath:datasource.properties"),
-		@PropertySource("classpath:jms.properties")
-})
+////@PropertySource({"classpath:datasource.properties","classpath:jms.properties"})  was added in spring 4
+//@PropertySources({
+//		@PropertySource("classpath:datasource.properties"),
+//		@PropertySource("classpath:jms.properties")
+//})
 public class PropertyConfig {
 
-	@Autowired
-	Environment env;
+//	@Autowired
+//	Environment env;
 	
 	
 	@Value("${guru.username}")
@@ -45,7 +45,8 @@ public class PropertyConfig {
 	@Bean
 	public FakeDataSource fakeDataSource() {
 		FakeDataSource fakeDataSource = new FakeDataSource();
-		fakeDataSource.setUser(env.getProperty("USERNAME"));
+//		fakeDataSource.setUser(env.getProperty("USERNAME"));
+		fakeDataSource.setUser(user);
 		fakeDataSource.setPassword(password);
 		fakeDataSource.setUrl(url);
 		return fakeDataSource;
@@ -61,11 +62,11 @@ public class PropertyConfig {
 	}
 	
 	
-	@Bean
-	public static PropertySourcesPlaceholderConfigurer properties() {
-		PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer = 
-										new PropertySourcesPlaceholderConfigurer();
-		return propertySourcesPlaceholderConfigurer;
-	}
+//	@Bean
+//	public static PropertySourcesPlaceholderConfigurer properties() {
+//		PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer = 
+//										new PropertySourcesPlaceholderConfigurer();
+//		return propertySourcesPlaceholderConfigurer;
+//	}
 	
 }
